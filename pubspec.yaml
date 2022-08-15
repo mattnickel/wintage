@@ -24,6 +24,9 @@ dependencies:
   flutter:
     sdk: flutter
   provider : ^4.3.1
+  http: any
+  shimmer: ^1.1.1
+
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -45,7 +48,14 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - images/
+    - assets/images/wintage_logo.png
+    - assets/images/chairs1.png
+    - assets/images/chairs2.png
+    - assets/images/clock.png
+    - assets/images/plants.png
+    - assets/images/wicker.png
+    - assets/images/shelf.png
+    - assets/images/rattan.png
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

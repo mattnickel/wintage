@@ -14,7 +14,7 @@ class Framework extends StatelessWidget{
             SafeArea(
                 child: Scaffold(
                   appBar: AppBar(
-                    title: Image.asset('images/wintage_logo.png', fit: BoxFit.cover),
+                    title: Image.asset('assets/images/wintage_logo.png', fit: BoxFit.cover),
                   ),
                   drawer: SideMenu(),
                   bottomNavigationBar: Material(
