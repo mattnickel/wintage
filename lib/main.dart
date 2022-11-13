@@ -12,12 +12,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Wintage',
       theme: ThemeData(
         primaryColor: const Color(0xffD3A898),
-        accentColor: const Color(0xffE0D5CB),
+        backgroundColor: Colors.white,
 
-        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Framework(),
     );

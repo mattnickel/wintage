@@ -11,31 +11,29 @@ class Explore extends StatefulWidget{
 }
 
 class _ExploreState extends State<Explore>{
+  late Future<List<Category>> _categories;
 
   @override
   initState(){
     super.initState ();
+     _categories= getCategories(http.Client());
   }
 
   @override
   Widget build(BuildContext context) {
 
-    List<String> img = <String>['chairs1.png', 'chairs2.png', 'plants.png'];
-    List<String> img2 = <String>['plants.png', 'wicker.png', 'chairs2.png'];
-    List<String> img3 = <String>['clock.png', 'shelf.png', 'rattan.png'];
     return FutureBuilder<List<Category>>(
-        future: getCategories(http.Client()),
+        future: _categories,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasError) print(snapshot.error);
             return snapshot.hasData
-
                 ? ListView.builder(
                 padding: const EdgeInsets.only(top:40),
-                itemCount: snapshot.data.length+1,
+                itemCount: snapshot.data?.length,
                 itemBuilder: (context, index){
-                  if (index < snapshot.data.length){
-                    return ProductRow(category: snapshot.data[index].name);
+                  if (index < snapshot.data!.length+1){
+                    return ProductRow(category: snapshot.data![index].name);
                   }else{
                     return Container(
                         height:100
@@ -45,17 +43,9 @@ class _ExploreState extends State<Explore>{
             )
                 : Container();
           }else{
-            return Padding(
-              padding: const EdgeInsets.only(top:20.0),
-              child: ListView(
-                children:<Widget>[
-                  ProductRow(category:"Recommended Products", image:img),
-                  ProductRow(category:"New Products", image:img2),
-                  ProductRow(category:"On Sale Today", image:img3),
-
-                ],
-              ),
-            );;
+            return Center(
+              child:Text("Nothing to see here")
+            );
           }
         }
     );

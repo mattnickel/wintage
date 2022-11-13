@@ -16,6 +16,6 @@ class NavbarTabSelectedModel extends ChangeNotifier {
   ];
 
   set currentTab(int tab) { this._currentTab = tab; notifyListeners();}
-  get currentTab => this._currentTab;
+  int get currentTab => this._currentTab;
   get currentScreen => this._pages[this._currentTab];
 }

@@ -7,24 +7,25 @@ import '../models/categories.dart';
 
 Future<List<Product>> fetchProducts(client, category, context) async {
 
-  var url = "http://localhost:3000/api/v1/products"+"?category=$category";
+  Uri url = Uri.parse("http://localhost:3000/api/v1/products"+"?category=$category");
   print("Fetching from cache: $category");
   final response = await client.get(
       url, headers: {'content-type': 'application/json'}
   );
 
   if (response != null) {
+    print("we have response");
     if (response.statusCode == 200) {
       print(response.body);
       return parseProducts(response.body);
     } else {
 
-      return null;
+      return List.empty();
     }
-  } else return null;
+  } else return List.empty();
 }
 Future<List<Category>>getCategories(client) async {
-  var url = "http://localhost:3000/api/v1/categories";
+  Uri url = Uri.parse("http://localhost:3000/api/v1/categories");
 
   final response = await client.get(
       url, headers: {'content-type': 'application/json'}
@@ -36,5 +37,7 @@ Future<List<Category>>getCategories(client) async {
     final parsedList = parsed.map<Category>((json) => Category.fromJson(json)).toList();
     print(parsedList);
     return parsedList;
-  }else return null;
+  }else {
+    return List.empty();
+  }
 }

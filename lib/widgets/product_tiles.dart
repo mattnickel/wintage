@@ -7,7 +7,7 @@ class ProductTiles extends StatefulWidget {
   List<Product> product;
   int index;
 
-  ProductTiles({ this.product, this.index});
+  ProductTiles({ required this.product, required this.index});
 
   @override
   _ProductTilesState createState() => _ProductTilesState();
@@ -20,7 +20,7 @@ class _ProductTilesState extends State<ProductTiles> {
 
 
   @override
-  Future<void> initState() {
+  initState() {
     super.initState();
   }
 

@@ -2,12 +2,12 @@ class CategoryList {
   final List<Category> categories;
 
   CategoryList({
-    this.categories,
+    required this.categories,
   });
 
   factory CategoryList.fromJson(List<dynamic> parsedJson) {
 
-    List<Category> categories = new List<Category>();
+    List<Category> categories = <Category>[];
     categories = parsedJson.map((i)=>Category.fromJson(i)).toList();
 
     return new CategoryList(
@@ -21,9 +21,9 @@ class CategoryList {
 
 
 class Category {
-  String name;
+  late String name;
 
-  Category({this.name});
+  Category({required this.name});
 
   Category.fromJson(Map<String, dynamic> json) {
     name = json['name'];

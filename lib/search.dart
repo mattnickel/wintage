@@ -42,7 +42,8 @@ class CustomSearchDelegate extends SearchDelegate {
           )
         ],
       );
-    }
+    }else
+      return Text("nope");
   }
 
   @override

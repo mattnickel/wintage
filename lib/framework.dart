@@ -15,6 +15,7 @@ class Framework extends StatelessWidget{
                 child: Scaffold(
                   appBar: AppBar(
                     title: Image.asset('assets/images/wintage_logo.png', fit: BoxFit.cover),
+                    backgroundColor: const Color(0xffD3A898),
                   ),
                   drawer: SideMenu(),
                   bottomNavigationBar: Material(
@@ -27,19 +28,19 @@ class Framework extends StatelessWidget{
                         items: const <BottomNavigationBarItem>[
                           BottomNavigationBarItem(
                               icon: Icon(Icons.home),
-                              title: Text('Home'),
+                              label: 'Home',
                           ),
                           BottomNavigationBarItem(
                                icon: Icon(Icons.shopping_bag ),
-                              title: Text('Shop'),
+                              label: 'Shop',
                           ),
                           BottomNavigationBarItem(
                               icon: Icon(Icons.favorite),
-                              title: Text('Favorites'),
+                              label: 'Favorites',
                           ),
                           BottomNavigationBarItem(
                             icon: Icon(Icons.message),
-                            title: Text('Message'),
+                            label: 'Message',
                           ),
                         ],
                         fixedColor: Colors.white,

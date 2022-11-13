@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 class SideMenu extends StatelessWidget {
   final _titleName = "home";
   final _username = "Profile";
-  Function _doSomething(){
-  }
+  // Function _doSomething(){}
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +14,7 @@ class SideMenu extends StatelessWidget {
             leading: Icon(Icons.portrait_rounded),
             title: Text("Profile"),
             onTap: (){
-              _doSomething();
+              // _doSomething();
               Navigator.pop(context);
             },
           ),

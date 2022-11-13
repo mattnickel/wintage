@@ -5,17 +5,30 @@ import 'package:shimmer/shimmer.dart';
 import '../services/api_calls_v1.dart';
 import '../models/product.dart';
 
-class ProductRow extends StatelessWidget {
+class ProductRow extends StatefulWidget {
   String category;
-  List<String> image;
-  int index;
 
-  ProductRow({ this.category, this.image, this.index});
+  ProductRow({ required this.category});
+
+  @override
+  State<ProductRow> createState() => _ProductRowState();
+}
+
+class _ProductRowState extends State<ProductRow> {
+  late Future<List<Product>> _products;
+  late int index;
+  @override
+  initState(){
+    super.initState ();
+    print(widget.category);
+    _products= fetchProducts(http.Client(), widget.category, context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return
       FutureBuilder<List<Product>>(
-        future: fetchProducts(http.Client(), category, context),
+        future: _products,
     builder: (context, snapshot) {
 
     if(snapshot.connectionState == ConnectionState.done) {
@@ -29,7 +42,7 @@ class ProductRow extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(left: 20.0, bottom:10.0),
                 child: Text(
-                    category,
+                    widget.category,
                     style: TextStyle(
                       fontSize: 18,
                     )
@@ -51,10 +64,11 @@ class ProductRow extends StatelessWidget {
                 height: 220,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: snapshot.data == null ? 0 : snapshot.data.length,
+
+                  itemCount: snapshot.data == null ? 0 : snapshot.data?.length,
                   itemBuilder: (context, index) {
                     return ProductTiles(
-                      product: snapshot.data,
+                      product: snapshot.data!,
                       index: index,
                     );
                   },
@@ -72,7 +86,7 @@ class ProductRow extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.only(left: 20.0, bottom:10.0),
                   child: Text(
-                      category,
+                      widget.category,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 24,
